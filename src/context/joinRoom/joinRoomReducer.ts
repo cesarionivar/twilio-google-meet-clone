@@ -1,6 +1,10 @@
 import { joinRoomState } from '.';
 
-type ActionProps = { type: 'joinRoom' } | { type: 'leaveRoom' };
+type ActionProps =
+  | { type: 'joinRoom' }
+  | { type: 'leaveRoom' }
+  | { type: 'toggleAudio' }
+  | { type: 'toggleVideo' };
 
 export const joinRoomReducer = (state: joinRoomState, action: ActionProps) => {
   switch (action.type) {
@@ -14,6 +18,18 @@ export const joinRoomReducer = (state: joinRoomState, action: ActionProps) => {
       return {
         ...state,
         isInTheRoom: false,
+      };
+
+    case 'toggleAudio':
+      return {
+        ...state,
+        withAudio: !state.withAudio,
+      };
+
+    case 'toggleVideo':
+      return {
+        ...state,
+        withVideo: !state.withVideo,
       };
 
     default:
