@@ -1,8 +1,11 @@
 import heroImg from '../assets/hero.svg';
+import { Navbar } from '../components/Navbar';
 
 export const Home = () => {
   return (
     <div>
+      <Navbar />
+
       <div className='px-10 lg:px-0 mt-14 lg:grid lg:grid-cols-2'>
         <div className='flex flex-col items-center justify-center max-w-lg m-auto'>
           <h1 className='text-4xl font-semibold leading-tight text-center text-gray-900 lg:text-left '>
