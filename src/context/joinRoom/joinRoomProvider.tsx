@@ -1,4 +1,4 @@
-import { useContext, useReducer } from 'react';
+import { useReducer } from 'react';
 import { JoinRoomContext } from './joinRoomContext';
 import { joinRoomReducer } from './joinRoomReducer';
 
@@ -23,6 +23,7 @@ export const JoinRoomProvider = ({ children }: Props) => {
     joinRoomReducer,
     JOIN_ROOM_INITIAL_STATE
   );
+  const { withAudio, withVideo } = state;
 
   const toggleAudio = () => {
     dispatch({ type: 'toggleAudio' });

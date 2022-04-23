@@ -1,11 +1,29 @@
-import { useRef } from 'react';
-import { Navbar } from '../components/Navbar';
+import { useEffect, useRef } from 'react';
+import { createLocalTracks } from 'twilio-video';
 
+import { Navbar } from '../components/Navbar';
 import { useJoinRoom } from '../context/joinRoom';
 
 export const PreJoining = () => {
-  const { toggleAudio, toggleVideo, joinRoom } = useJoinRoom();
+  const { toggleAudio, toggleVideo, withAudio, withVideo, joinRoom } =
+    useJoinRoom();
   const videoDiv = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    console.log('Generated the video with the new config');
+
+    createLocalTracks({ audio: withAudio, video: withVideo }).then(
+      (localTracks) => {
+        localTracks.forEach((track: any) => {
+          videoDiv.current?.appendChild(track.attach());
+        });
+      }
+    );
+
+    return () => {
+      videoDiv.current = null;
+    };
+  }, [withAudio, withVideo]);
 
   return (
     <div>
