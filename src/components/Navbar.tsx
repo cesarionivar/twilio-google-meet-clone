@@ -11,7 +11,7 @@ export const Navbar = () => {
         </h2>
       </Link>
       <div className='flex items-center text-gray-500'>
-        <p className='text:normal sm:text-lg'>3:37 PM . Sat, April 23</p>
+        <p className='text:normal sm:text-lg'>3:37 PM • Sat, April 23</p>
         <p className='hidden gap-5 ml-8 mr-10 text-xl cursor-pointer sm:flex'>
           <i className='fa-regular fa-circle-question'></i>
           <i className='fa-regular fa-message'></i>
