@@ -5,13 +5,11 @@ import { joinRoomReducer } from './joinRoomReducer';
 export interface joinRoomState {
   isInTheRoom: boolean;
   withAudio: boolean;
-  withVideo: boolean;
 }
 
 const JOIN_ROOM_INITIAL_STATE = {
   isInTheRoom: false,
-  withAudio: true,
-  withVideo: false,
+  withAudio: false,
 };
 
 type Props = {
@@ -23,14 +21,9 @@ export const JoinRoomProvider = ({ children }: Props) => {
     joinRoomReducer,
     JOIN_ROOM_INITIAL_STATE
   );
-  const { withAudio, withVideo } = state;
 
   const toggleAudio = () => {
     dispatch({ type: 'toggleAudio' });
-  };
-
-  const toggleVideo = () => {
-    dispatch({ type: 'toggleVideo' });
   };
 
   const joinRoom = () => {
@@ -38,9 +31,7 @@ export const JoinRoomProvider = ({ children }: Props) => {
   };
 
   return (
-    <JoinRoomContext.Provider
-      value={{ ...state, joinRoom, toggleAudio, toggleVideo }}
-    >
+    <JoinRoomContext.Provider value={{ ...state, joinRoom, toggleAudio }}>
       {children}
     </JoinRoomContext.Provider>
   );
