@@ -1,2 +1,2 @@
-export * from './JoinRoomProvider';
+export * from './joinRoomProvider';
 export { useJoinRoom } from './useJoinRoom';
